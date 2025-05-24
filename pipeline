@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-               git 'https://jenkins-pipe.git'
+               git 'https://github.com/roshinikonda/jenkins-pipe.git'
                 echo 'Using local workspace for HelloWorld.java'
             }
         }
