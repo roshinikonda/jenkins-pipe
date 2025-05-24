@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+               git 'https://jenkins-pipe.git'
+                echo 'Using local workspace for HelloWorld.java'
+            }
+        }
+
+        stage('Compile Java') {
+            steps {
+                sh 'java HelloWorld.java'
+            }
+        }
+
+        stage('Run Java Program') {
+            steps {
+                sh 'java HelloWorld'
+            }
+        }
+    }
+}
