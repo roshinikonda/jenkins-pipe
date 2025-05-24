@@ -1,16 +1,24 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', 
-                    credentialsId: 'token-for-git', 
-                    url: 'https://github.com/roshinikonda/jenkins-pipe.git'
+                // If you're using Git, uncomment the next line:
+                 git 'https://github.com/roshinikonda/jenkins-pipe.git'
+                echo 'Using local workspace for HelloWorld.java'
             }
         }
-        stage('Build') {
+
+        stage('Compile Java') {
             steps {
-                echo "Hello from Java Pipeline"
+                sh 'javac HelloWorld.java'
+            }
+        }
+
+        stage('Run Java Program') {
+            steps {
+                sh 'java HelloWorld'
             }
         }
     }
